@@ -1,3 +1,20 @@
 # Arquivos de Cache do Python
 __pycache__/
 *.pyc
+
+# Pastas de build
+build/
+dist/
+
+# Arquivos grandes e compactados
+Futepong.zip
+Futepong.rar
+
+# Arquivos de ícone
+Images/icone.ico
+
+# Arquivos de especificações do PyInstaller (ou similar)
+Main.spec
+
+# Ambiente virtual Python
+venv/
