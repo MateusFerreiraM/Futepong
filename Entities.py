@@ -213,7 +213,7 @@ class PowerUp(Sprite):
 
 class BallTrail(Sprite):
     def __init__(self, image, position):
-        super().__init__("images/boost/bola.png", 1)
+        super().__init__("assets/images/boost/bola.png", 1)
         self.image = image.copy()
         self.image = self.image.convert_alpha()
         self.x, self.y = position

@@ -2,7 +2,7 @@
 
 | Tela Inicial | Seleção de Personagens | Partida em Andamento |
 |:---:|:---:|:---:|
-| ![Tela Inicial do Jogo](Images/menu.png) | ![Tela de Seleção de Personagens](Images/jogadores.png) | ![Gameplay da Partida](Images/gameplay.png) |
+| ![Tela Inicial do Jogo](Assets/Images/Jogo/menu.png) | ![Tela de Seleção de Personagens](Assets/Images/Jogo/jogadores.png) | ![Gameplay da Partida](Assets/Images/Jogo/gameplay.png) |
 
 Um clássico jogo de Pong reimaginado com a paixão e a emoção do futebol! Escolha entre craques mundiais, use power-ups e dispute partidas eletrizantes contra a IA ou um amigo.
 

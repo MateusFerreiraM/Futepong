@@ -1,4 +1,3 @@
-# constants.py
 import os
 from enum import Enum
 
@@ -18,12 +17,15 @@ COLOR_YELLOW = (255, 255, 0)
 COLOR_BLACK = (0, 0, 0)
 
 # ASSET PATHS
-IMAGE_PATH = "images/"
-PLAYERS_PATH = os.path.join(IMAGE_PATH, "players/")
-FLAGS_PATH = os.path.join(IMAGE_PATH, "flags/")
-FONT_PATH = "fonts/"
-SOUND_PATH = "sounds/"
-BOOST_PATH = "images/boost/"
+# Ajustado para usar a pasta 'Assets' como base
+BASE_ASSETS_PATH = "Assets/"
+
+IMAGE_PATH = os.path.join(BASE_ASSETS_PATH, "Images/")
+PLAYERS_PATH = os.path.join(IMAGE_PATH, "Players/")
+FLAGS_PATH = os.path.join(IMAGE_PATH, "Flags/")
+FONT_PATH = os.path.join(BASE_ASSETS_PATH, "Fonts/")
+SOUND_PATH = os.path.join(BASE_ASSETS_PATH, "Sounds/")
+BOOST_PATH = os.path.join(IMAGE_PATH, "Boost/")
 
 # IMAGE FILES
 BACKGROUND_IMAGE = os.path.join(IMAGE_PATH, "fundo.png")
@@ -36,6 +38,7 @@ SLOW_BALL_IMAGE = os.path.join(BOOST_PATH, "boost_gelo.png")
 GOAL_ANIMATION_GIF = os.path.join(IMAGE_PATH, "gol_animacao.gif")
 
 # Player Images
+# Corrigido o caminho para a pasta 'Players'
 NEYMAR_IMAGE = os.path.join(PLAYERS_PATH, "neymar.png")
 MESSI_IMAGE = os.path.join(PLAYERS_PATH, "messi.png")
 CR7_IMAGE = os.path.join(PLAYERS_PATH, "ronaldo.png")
@@ -44,6 +47,7 @@ MORATA_IMAGE = os.path.join(PLAYERS_PATH, "morata.png")
 MULLER_IMAGE = os.path.join(PLAYERS_PATH, "muller.png")
 
 # Flag Images
+# Corrigido o caminho para a pasta 'Flags'
 FLAG_BRAZIL_IMAGE = os.path.join(FLAGS_PATH, "bandeira_brasil.png")
 FLAG_ARGENTINA_IMAGE = os.path.join(FLAGS_PATH, "bandeira_argentina.png")
 FLAG_PORTUGAL_IMAGE = os.path.join(FLAGS_PATH, "bandeira_portugal.png")
@@ -62,12 +66,14 @@ CHARACTERS = [
 ]
 
 # FONT FILES
+# Corrigido o caminho para a pasta 'Fonts'
 FONT_MAIN_TITLE = os.path.join(FONT_PATH, "superstar_m54/Superstar M54.ttf")
 FONT_SECTION_TITLE = os.path.join(FONT_PATH, "KenVector Future 2/kenvector_future.ttf")
 FONT_BODY = os.path.join(FONT_PATH, "kenney-mini-square/kenney_mini_square.otf")
 FONT_SCORE = os.path.join(FONT_PATH, "score_font/score_font.ttf")
 
 # SOUND FILES
+# Corrigido o caminho para a pasta 'Sounds'
 START_WHISTLE_SOUND = os.path.join(SOUND_PATH, "apito_inicio.wav")
 END_WHISTLE_SOUND = os.path.join(SOUND_PATH, "apito_fim.wav")
 KICK_SOUND = os.path.join(SOUND_PATH, "chute.wav")
