@@ -47,7 +47,7 @@ Siga os passos abaixo para rodar o FutePong na sua máquina local.
 
 1.  **Clone o repositório:**
     ```sh
-    git clone [https://github.com/MateusFerreiraM/Futepong.git](https://github.com/MateusFerreiraM/Futepong.git)
+    git clone https://github.com/MateusFerreiraM/Futepong.git
     cd Futepong
     ```
 
