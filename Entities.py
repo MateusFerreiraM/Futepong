@@ -136,8 +136,14 @@ class Ball(Sprite):
     def reset(self, window, direction=1):
         self.x = window.width / 2 - self.width / 2
         self.y = window.height / 2 - self.height / 2
-        self.velocity_x = self.initial_speed * direction
-        self.velocity_y = self.initial_speed * random.choice([-1, 1])
+        
+        # Definir ângulo aleatório (entre -45° e 45°) para evitar trajetórias muito verticais
+        import random
+        angle = random.uniform(-0.7854, 0.7854)  # -45° a 45° em radianos
+        
+        # Calcular velocidades para manter a velocidade total = initial_speed
+        self.velocity_x = self.initial_speed * math.cos(angle) * direction
+        self.velocity_y = self.initial_speed * math.sin(angle)
 
     def move(self, window):
         self.x += self.velocity_x * window.delta_time()
@@ -201,15 +207,24 @@ class PowerUp(Sprite):
         self.is_active = False
         current_velocity_magnitude = math.sqrt(ball.velocity_x**2 + ball.velocity_y**2)
         if current_velocity_magnitude == 0: return
+        
+        # Calcular a direção da bola
         dir_x = ball.velocity_x / current_velocity_magnitude
         dir_y = ball.velocity_y / current_velocity_magnitude
+        
         if self.type == 'SPEED_BOOST':
+            # Aumenta a velocidade em 30%
             new_speed = current_velocity_magnitude * 1.3
             ball.velocity_x = dir_x * new_speed
             ball.velocity_y = dir_y * new_speed
         elif self.type == 'SLOW_BALL':
-            ball.velocity_x = dir_x * ball.initial_speed
-            ball.velocity_y = dir_y * ball.initial_speed
+            # Diminui a velocidade em 30% (inverso do speed boost)
+            new_speed = current_velocity_magnitude / 1.3
+            # Garantir que não fique mais lenta que a velocidade inicial
+            if new_speed < ball.initial_speed:
+                new_speed = ball.initial_speed
+            ball.velocity_x = dir_x * new_speed
+            ball.velocity_y = dir_y * new_speed
 
 class BallTrail(Sprite):
     def __init__(self, image, position):

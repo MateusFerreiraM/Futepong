@@ -28,8 +28,11 @@ class Game:
         self.player2 = None
         self.ball = None
 
-        self.powerup_types = [PowerUp(BOOST_IMAGE, 'SPEED_BOOST'), PowerUp(SLOW_BALL_IMAGE, 'SLOW_BALL')]
-        self.powerup_weights = [0.65, 0.35]
+        # Criar os power-ups com tipos específicos
+        self.speed_boost_powerup = PowerUp(BOOST_IMAGE, 'SPEED_BOOST')
+        self.slow_ball_powerup = PowerUp(SLOW_BALL_IMAGE, 'SLOW_BALL')
+        self.powerup_types = [self.speed_boost_powerup, self.slow_ball_powerup]
+        self.powerup_weights = [0.65, 0.35]  # 65% chance para speed boost, 35% para slow
         self.active_powerup = None
         self.scores = {"left": 0, "right": 0}
         self.powerup_spawn_timer = 0
@@ -241,11 +244,19 @@ class Game:
             if self.powerup_spawn_timer >= POWERUP_SPAWN_TIME:
                 self.powerup_spawn_timer = 0
                 self.powerup_on_screen_timer = 0
-                is_boosted = math.sqrt(self.ball.velocity_x**2 + self.ball.velocity_y**2) > self.ball.initial_speed + 1
+                
+                # Verificar se a bola está com velocidade maior que a inicial
+                current_speed = math.sqrt(self.ball.velocity_x**2 + self.ball.velocity_y**2)
+                # Só pode aparecer SLOW_BALL se a velocidade for pelo menos 20% maior que a inicial
+                is_boosted = current_speed > self.ball.initial_speed * 1.2
+                
                 if not is_boosted:
-                    self.active_powerup = self.powerup_types[0]
+                    # Se a bola está na velocidade inicial ou menor, só pode aparecer SPEED_BOOST
+                    self.active_powerup = self.speed_boost_powerup
                 else:
+                    # Se a bola está boosted, pode aparecer qualquer power-up com as probabilidades normais
                     self.active_powerup = random.choices(self.powerup_types, self.powerup_weights, k=1)[0]
+                
                 self.active_powerup.spawn(self.window)
 
         if self.active_powerup and self.active_powerup.is_active and self.ball.collided(self.active_powerup):
